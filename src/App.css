@@ -1,0 +1,372 @@
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Animated grid pattern */
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v60H0zM60 0h1v60H60zM0 0v1h60V0zM0 60v1h60V60z' stroke='%23ffffff15' fill='none' stroke-width='0.8'/%3E%3C/svg%3E"),
+        /* Subtle dot pattern overlay */
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+    background-size: 60px 60px, 30px 30px;
+    background-position: 0 0, 15px 15px;
+    pointer-events: none;
+    z-index: -1;
+    backdrop-filter: blur(0.5px);
+    
+    /* Subtle animation */
+    animation: gridShift 20s ease-in-out infinite alternate;
+}
+
+.grid-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Multi-layer gradient for depth */
+        radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at top right, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(34, 197, 94, 0.04) 0%, transparent 50%),
+        /* Central vignette */
+        radial-gradient(circle at center, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: -1;
+    animation: gradientPulse 15s ease-in-out infinite alternate;
+}
+
+.grid-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Noise texture for visual interest */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: overlay;
+}
+
+/* Animation keyframes */
+@keyframes gridShift {
+    0% {
+        background-position: 0 0, 15px 15px;
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        background-position: 5px 5px, 20px 20px;
+        transform: translateX(2px) translateY(2px);
+    }
+}
+
+@keyframes gradientPulse {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+/* Enhanced version with floating particles */
+.grid-background-enhanced {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Primary grid */
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v80H0zM80 0h1v80H80zM0 0v1h80V0zM0 80v1h80V80z' stroke='%23ffffff12' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+        /* Secondary grid */
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v20H0zM20 0h1v20H20zM0 0v1h20V0zM0 20v1h20V20z' stroke='%23ffffff06' fill='none' stroke-width='0.5'/%3E%3C/svg%3E"),
+        /* Floating dots */
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(circle at 60% 30%, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 
+        80px 80px,
+        20px 20px,
+        150px 150px,
+        200px 200px,
+        180px 180px;
+    background-position: 
+        0 0,
+        10px 10px,
+        0 0,
+        0 0,
+        0 0;
+    pointer-events: none;
+    z-index: -1;
+    backdrop-filter: blur(0.8px) saturate(1.2);
+    animation: gridShiftEnhanced 25s ease-in-out infinite alternate;
+}
+
+.grid-background-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Animated color gradients */
+        conic-gradient(from 0deg at 20% 30%, rgba(59, 130, 246, 0.1) 0deg, transparent 60deg, rgba(168, 85, 247, 0.08) 120deg, transparent 180deg),
+        radial-gradient(ellipse at 70% 20%, rgba(236, 72, 153, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+        /* Central focus gradient */
+        radial-gradient(circle at center, 
+            rgba(255, 255, 255, 0.02) 0%, 
+            rgba(0, 0, 0, 0) 30%, 
+            rgba(0, 0, 0, 0.3) 60%, 
+            rgba(0, 0, 0, 0.7) 85%, 
+            rgba(0, 0, 0, 0.9) 100%);
+    animation: gradientFlow 20s ease-in-out infinite;
+}
+
+@keyframes gridShiftEnhanced {
+    0% {
+        background-position: 0 0, 10px 10px, 0 0, 50px 30px, 30px 50px;
+        filter: hue-rotate(0deg);
+        transform: scale(1) skew(0deg);
+    }
+    15% {
+        background-position: 5px 5px, 15px 15px, 10px 10px, 60px 40px, 40px 60px;
+        filter: hue-rotate(5deg);
+        transform: scale(1.01) skew(0.2deg);
+    }
+    25% {
+        background-position: 15px 5px, 25px 15px, 20px 10px, 80px 50px, 60px 80px;
+        filter: hue-rotate(8deg);
+        transform: scale(0.98) skew(-0.5deg);
+    }
+    35% {
+        background-position: 25px 15px, 35px 25px, 30px 20px, 90px 60px, 70px 90px;
+        filter: hue-rotate(12deg);
+        transform: scale(1.02) skew(0.8deg);
+    }
+    50% {
+        background-position: 40px 30px, 50px 40px, 45px 35px, 120px 80px, 100px 120px;
+        filter: hue-rotate(15deg);
+        transform: scale(0.95) skew(-1.2deg);
+    }
+    65% {
+        background-position: 30px 25px, 40px 35px, 35px 30px, 100px 70px, 80px 100px;
+        filter: hue-rotate(10deg);
+        transform: scale(1.03) skew(0.6deg);
+    }
+    75% {
+        background-position: 20px 15px, 30px 25px, 25px 20px, 85px 55px, 65px 85px;
+        filter: hue-rotate(6deg);
+        transform: scale(0.97) skew(-0.3deg);
+    }
+    85% {
+        background-position: 10px 8px, 20px 18px, 15px 13px, 70px 45px, 50px 70px;
+        filter: hue-rotate(3deg);
+        transform: scale(1.01) skew(0.1deg);
+    }
+    100% {
+        background-position: 0 0, 10px 10px, 0 0, 50px 30px, 30px 50px;
+        filter: hue-rotate(0deg);
+        transform: scale(1) skew(0deg);
+    }
+}
+
+/* Broken grid animation with glitch effects */
+.grid-background-broken {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Primary distorted grid */
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v80H0zM80 0h1v80H80zM0 0v1h80V0zM0 80v1h80V80z' stroke='%23ffffff12' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+        /* Broken secondary grid */
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v40H0zM40 0h1v40H40zM0 0v1h40V0zM0 40v1h40V40z' stroke='%23ffffff08' fill='none' stroke-width='0.8'/%3E%3C/svg%3E"),
+        /* Glitch lines */
+        url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10h30M40 10h20M70 10h30' stroke='%23ff000020' stroke-width='1'/%3E%3C/svg%3E"),
+        /* Static noise dots */
+        radial-gradient(circle at 25% 25%, rgba(255,0,100,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(0,255,150,0.08) 1px, transparent 1px),
+        radial-gradient(circle at 50% 10%, rgba(100,150,255,0.06) 1px, transparent 1px);
+    background-size: 
+        80px 80px,
+        40px 40px,
+        100px 20px,
+        120px 120px,
+        160px 160px,
+        140px 140px;
+    background-position: 
+        0 0,
+        20px 20px,
+        0 0,
+        0 0,
+        0 0,
+        0 0;
+    pointer-events: none;
+    z-index: -1;
+    backdrop-filter: blur(0.5px) contrast(1.1);
+    animation: brokenGridGlitch 8s ease-in-out infinite;
+}
+
+.grid-background-broken::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Glitch color bands */
+        linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(255, 0, 100, 0.05) 20%, 
+            transparent 25%,
+            transparent 45%,
+            rgba(0, 255, 150, 0.04) 50%,
+            transparent 55%,
+            transparent 75%,
+            rgba(100, 150, 255, 0.03) 80%,
+            transparent 85%),
+        /* Broken vignette */
+        radial-gradient(ellipse at 30% 70%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6) 80%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.4) 70%),
+        radial-gradient(circle at center, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.7) 100%);
+    animation: glitchDistortion 6s ease-in-out infinite;
+}
+
+.grid-background-broken::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        /* Digital noise overlay */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='brokenNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23brokenNoise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: screen;
+    animation: noiseFlicker 4s steps(8) infinite;
+}
+
+@keyframes brokenGridGlitch {
+    0% {
+        background-position: 0 0, 20px 20px, 0 0, 0 0, 50px 30px, 30px 50px;
+        transform: translateX(0) scale(1);
+        filter: hue-rotate(0deg) contrast(1);
+    }
+    8% {
+        background-position: 2px -1px, 18px 22px, -5px 0, 10px -5px, 55px 25px, 25px 55px;
+        transform: translateX(1px) scale(1.001);
+        filter: hue-rotate(2deg) contrast(1.05);
+    }
+    12% {
+        background-position: -3px 2px, 25px 18px, 8px -2px, -8px 12px, 45px 35px, 35px 45px;
+        transform: translateX(-2px) scale(0.999);
+        filter: hue-rotate(-3deg) contrast(1.1);
+    }
+    16% {
+        background-position: 5px -2px, 15px 25px, -3px 3px, 15px -8px, 60px 25px, 40px 60px;
+        transform: translateX(3px) scale(1.002);
+        filter: hue-rotate(5deg) contrast(0.95);
+    }
+    25% {
+        background-position: -8px 5px, 28px 12px, 12px -5px, -12px 18px, 35px 45px, 55px 35px;
+        transform: translateX(-4px) scale(0.998);
+        filter: hue-rotate(-8deg) contrast(1.15);
+    }
+    35% {
+        background-position: 12px -8px, 8px 32px, -8px 8px, 22px -15px, 70px 20px, 20px 70px;
+        transform: translateX(5px) scale(1.003);
+        filter: hue-rotate(12deg) contrast(0.9);
+    }
+    45% {
+        background-position: -5px 3px, 23px 17px, 5px -3px, -5px 8px, 50px 40px, 40px 50px;
+        transform: translateX(-1px) scale(1.001);
+        filter: hue-rotate(-2deg) contrast(1.02);
+    }
+    60% {
+        background-position: 8px -5px, 12px 28px, -8px 5px, 18px -12px, 65px 30px, 30px 65px;
+        transform: translateX(2px) scale(0.999);
+        filter: hue-rotate(8deg) contrast(1.08);
+    }
+    75% {
+        background-position: -3px 8px, 25px 15px, 3px -8px, -8px 15px, 40px 50px, 50px 40px;
+        transform: translateX(-3px) scale(1.001);
+        filter: hue-rotate(-5deg) contrast(0.98);
+    }
+    85% {
+        background-position: 2px -2px, 18px 22px, -2px 2px, 8px -5px, 52px 32px, 32px 52px;
+        transform: translateX(1px) scale(1);
+        filter: hue-rotate(3deg) contrast(1.01);
+    }
+    100% {
+        background-position: 0 0, 20px 20px, 0 0, 0 0, 50px 30px, 30px 50px;
+        transform: translateX(0) scale(1);
+        filter: hue-rotate(0deg) contrast(1);
+    }
+}
+
+@keyframes glitchDistortion {
+    0%, 90%, 100% {
+        transform: skewX(0deg) scaleY(1);
+        opacity: 0.9;
+    }
+    10% {
+        transform: skewX(0.5deg) scaleY(1.01);
+        opacity: 0.95;
+    }
+    20% {
+        transform: skewX(-0.3deg) scaleY(0.99);
+        opacity: 0.85;
+    }
+    30% {
+        transform: skewX(0.8deg) scaleY(1.02);
+        opacity: 0.92;
+    }
+    40% {
+        transform: skewX(-0.6deg) scaleY(0.98);
+        opacity: 0.88;
+    }
+    50% {
+        transform: skewX(0.2deg) scaleY(1.01);
+        opacity: 0.94;
+    }
+    60% {
+        transform: skewX(-0.4deg) scaleY(0.99);
+        opacity: 0.87;
+    }
+    70% {
+        transform: skewX(0.7deg) scaleY(1.015);
+        opacity: 0.91;
+    }
+    80% {
+        transform: skewX(-0.2deg) scaleY(0.995);
+        opacity: 0.93;
+    }
+}
+
+@keyframes noiseFlicker {
+    0%, 100% { opacity: 0.04; }
+    10% { opacity: 0.06; }
+    20% { opacity: 0.02; }
+    30% { opacity: 0.07; }
+    40% { opacity: 0.03; }
+    50% { opacity: 0.08; }
+    60% { opacity: 0.02; }
+    70% { opacity: 0.05; }
+    80% { opacity: 0.07; }
+    90% { opacity: 0.03; }
+}
